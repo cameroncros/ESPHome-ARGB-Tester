@@ -1,3 +1,5 @@
+// Copied directly from `https://github.com/esphome/esphome/blob/dev/esphome/core/color.h
+
 #pragma once
 
 #include <stdint.h>
