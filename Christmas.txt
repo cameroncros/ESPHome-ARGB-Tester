@@ -1,0 +1,9 @@
+
+static int x = 0;
+for (int i = x; i <  it.size(); i+=2) {
+it[i] = light::ESPColor(255, 0, 18);
+}
+for (int i = !x; i <  it.size(); i+=2) {
+it[i] = light::ESPColor(0, 179, 44);
+}
+x = !x;
