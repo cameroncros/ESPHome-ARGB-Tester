@@ -59,11 +59,11 @@ class RGBList {
 void ESP_LOGD(const char* unused, const char* unused2) {
 }
 int random(int max) {
-    return (rand()/RAND_MAX)*max;
+    return rand()%max;
 }
 
 int random(int min, int max) {
-    return (rand()/RAND_MAX)*(max-min)+min;
+    return (rand() % (max-min))+min;
 }
 
 void lambda_fn(RGBList &it, bool initial_run) {
@@ -84,10 +84,10 @@ void print_rgb(RGBList &it, const int len) {
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
-    auto rgb = RGBList(1000);
+    auto rgb = RGBList(50);
     for (int i = 0; i < UINT32_MAX; i++) {
         lambda_fn(rgb, i==0);
-        print_rgb(rgb, 100);
+        print_rgb(rgb, 50);
         usleep(100000);
     }
     return 0;
