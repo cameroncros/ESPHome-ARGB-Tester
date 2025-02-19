@@ -2,8 +2,12 @@
 #include <unistd.h>
 #include "Color.hpp"
 
+#ifndef CHAIN_LENGTH
 #define CHAIN_LENGTH 50
+#endif
+#ifndef SLEEP_MS
 #define SLEEP_MS 100
+#endif
 
 #define byte uint8_t
 
