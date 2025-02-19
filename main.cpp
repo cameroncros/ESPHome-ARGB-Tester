@@ -2,6 +2,9 @@
 #include <unistd.h>
 #include "Color.hpp"
 
+#define CHAIN_LENGTH 50
+#define SLEEP_MS 100
+
 #define byte uint8_t
 
 using namespace esphome;
@@ -69,7 +72,7 @@ int random(int min, int max) {
 void lambda_fn(RGBList &it, bool initial_run) {
 #define ESPColor Color
 #define light esphome
-#include "lambda.txt"
+#include "lambda.cpp"
 }
 
 
@@ -78,17 +81,17 @@ void print_rgb(RGBList &it, const int len) {
         printf("\e[48;2;%i;%i;%im ", it.at(i).red, it.at(i).green, it.at(i).blue);
     }
     fflush(stdout);
-    printf("\e[48;2;0;0;0m\n");
+    printf("\e[48;2;0;0;0m\r");
 }
 
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main() {
-    auto rgb = RGBList(50);
+    auto rgb = RGBList(CHAIN_LENGTH);
     for (int i = 0; i < UINT32_MAX; i++) {
         lambda_fn(rgb, i==0);
-        print_rgb(rgb, 50);
-        usleep(100000);
+        print_rgb(rgb, CHAIN_LENGTH);
+        usleep(SLEEP_MS * 1000);
     }
     return 0;
 }
